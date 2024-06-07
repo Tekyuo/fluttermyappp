@@ -1,0 +1,627 @@
+@startuml
+set namespaceSeparator ::
+
+class "fluttermyappp::controllers::appointment_controller.dart::AppointmentController" {
+  +RxBool isLoading
+  +TextEditingController txtController
+  +TextEditingController appDayController
+  +TextEditingController appTimeController
+  +TextEditingController appMobileController
+  +TextEditingController appNameController
+  +TextEditingController appMessageController
+  +dynamic bookAppointment()
+  +dynamic getAppointments()
+  +dynamic getEmployeesList()
+}
+
+"fluttermyappp::controllers::appointment_controller.dart::AppointmentController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxBool"
+"fluttermyappp::controllers::appointment_controller.dart::AppointmentController" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "fluttermyappp::controllers::appointment_controller.dart::AppointmentController"
+
+class "fluttermyappp::controllers::auth_controller.dart::AuthController" {
+  +TextEditingController fullnameController
+  +TextEditingController emailController
+  +TextEditingController passwordController
+  +TextEditingController aboutController
+  +TextEditingController saloonController
+  +TextEditingController addressController
+  +TextEditingController servicesController
+  +TextEditingController timingController
+  +TextEditingController phoneController
+  +String? categoryController
+  +UserCredential? userCredential
+  +dynamic isUserAlreadyLoggedIn()
+  +dynamic loginUser()
+  +dynamic signupUser()
+  +dynamic storeUserData()
+  +dynamic signout()
+}
+
+"fluttermyappp::controllers::auth_controller.dart::AuthController" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"fluttermyappp::controllers::auth_controller.dart::AuthController" o-- "firebase_auth::firebase_auth.dart::UserCredential"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "fluttermyappp::controllers::auth_controller.dart::AuthController"
+
+class "fluttermyappp::controllers::home_controller.dart::HomeController" {
+  +TextEditingController searchQueryController
+  +RxBool isLoading
+  +dynamic getEmployeesList()
+}
+
+"fluttermyappp::controllers::home_controller.dart::HomeController" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"fluttermyappp::controllers::home_controller.dart::HomeController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxBool"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "fluttermyappp::controllers::home_controller.dart::HomeController"
+
+class "fluttermyappp::controllers::settings_controller.dart::SettingsController" {
+  +RxBool isLoading
+  +RxString username
+  +RxString email
+  +RxString avatarUrl
+  +RxString userId
+  +void onInit()
+  -void _loadUserData()
+}
+
+"fluttermyappp::controllers::settings_controller.dart::SettingsController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxBool"
+"fluttermyappp::controllers::settings_controller.dart::SettingsController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxString"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "fluttermyappp::controllers::settings_controller.dart::SettingsController"
+
+class "fluttermyappp::controllers::settings_emp_controller.dart::SettingsEmpController" {
+  +RxBool isLoading
+  +RxString empName
+  +RxString empEmail
+  +RxString empAvatarUrl
+  +RxString empID
+  +void onInit()
+  -void _loadEmpData()
+}
+
+"fluttermyappp::controllers::settings_emp_controller.dart::SettingsEmpController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxBool"
+"fluttermyappp::controllers::settings_emp_controller.dart::SettingsEmpController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxString"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "fluttermyappp::controllers::settings_emp_controller.dart::SettingsEmpController"
+
+class "fluttermyappp::conts::colors.dart::AppColors" {
+  {static} +Color primaryColor
+  {static} +Color yellowColor
+  {static} +Color bgColor
+  {static} +Color textColor
+  {static} +Color blueColor
+  {static} +Color whiteColor
+  {static} +Color bgDarkColor
+}
+
+"fluttermyappp::conts::colors.dart::AppColors" o-- "dart::ui::Color"
+
+class "fluttermyappp::conts::fonts.dart::AppFonts" {
+  {static} +String nunito
+  {static} +String nunitoBold
+}
+
+class "fluttermyappp::conts::fonts.dart::AppSizes" {
+  {static} +double size12
+  {static} +double size14
+  {static} +double size16
+  {static} +double size18
+  {static} +double size20
+  {static} +double size22
+  {static} +double size34
+}
+
+class "fluttermyappp::conts::fonts.dart::AppStyles" {
+  {static} +dynamic normal()
+  {static} +dynamic bold()
+}
+
+class "fluttermyappp::conts::images.dart::AppAssets" {
+  {static} +String icBody
+  {static} +String icHaircut
+  {static} +String icHairstyle
+  {static} +String icMakeup
+  {static} +String icManicure
+  {static} +String icPedicure
+  {static} +String icCleaningFace
+  {static} +String icLogin
+  {static} +String imgSignup
+  {static} +String imgSplashBg
+  {static} +String imgWelcome
+  {static} +String icSalon
+  {static} +String imgHair
+}
+
+class "fluttermyappp::conts::strings.dart::AppStrings" {
+  {static} +String appname
+  {static} +String bestEmpapp
+  {static} +String welcomeBack
+  {static} +String weAreExcited
+  {static} +String signupNow
+  {static} +String email
+  {static} +String emailHint
+  {static} +String password
+  {static} +String passwordHint
+  {static} +String fullname
+  {static} +String fullnameHint
+  {static} +String confirmPassword
+  {static} +String forgetPassword
+  {static} +String login
+  {static} +String category
+  {static} +String salons
+  {static} +String salons1
+  {static} +String salons2
+  {static} +String salons3
+  {static} +String employee
+  {static} +String settings
+  {static} +String signup
+  {static} +String search
+  {static} +String welcome
+  {static} +String alreadyHaveAccount
+  {static} +String dontHaveAccount
+  {static} +String haircut
+  {static} +String hairstyles
+  {static} +String manicure
+  {static} +String pedicure
+  {static} +String makeup
+  {static} +String faceCleaning
+  {static} +String uploadPhotos
+  {static} +String seePhotos
+  {static} +String seeReviews
+  {static} +String signout
+}
+
+class "fluttermyappp::firebase_options.dart::DefaultFirebaseOptions" {
+  {static} +FirebaseOptions android
+  {static} +FirebaseOptions currentPlatform
+}
+
+"fluttermyappp::firebase_options.dart::DefaultFirebaseOptions" o-- "firebase_core_platform_interface::firebase_core_platform_interface.dart::FirebaseOptions"
+
+class "fluttermyappp::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::main.dart::MyApp"
+
+class "fluttermyappp::res::components::custom_button.dart::CustomButton" {
+  +dynamic Function()? onTap
+  +String buttonText
+  +Widget build()
+}
+
+"fluttermyappp::res::components::custom_button.dart::CustomButton" o-- "null::dynamic Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::res::components::custom_button.dart::CustomButton"
+
+class "fluttermyappp::res::components::custom_textfield.dart::CustomTextField" {
+  +String hint
+  +TextEditingController? textController
+  +Color textColor
+  +Color borderColor
+  +Color inputColor
+  +bool obscureText
+  +State<CustomTextField> createState()
+}
+
+"fluttermyappp::res::components::custom_textfield.dart::CustomTextField" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"fluttermyappp::res::components::custom_textfield.dart::CustomTextField" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::res::components::custom_textfield.dart::CustomTextField"
+
+class "fluttermyappp::res::components::custom_textfield.dart::_CustomTextFieldState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::res::components::custom_textfield.dart::_CustomTextFieldState"
+
+class "fluttermyappp::res::components::date_picker.dart::CustomTextFieldDate" {
+  +String hint
+  +TextEditingController textController
+  +dynamic Function()? onPressed
+  +void selectDate()
+  +Widget build()
+}
+
+"fluttermyappp::res::components::date_picker.dart::CustomTextFieldDate" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"fluttermyappp::res::components::date_picker.dart::CustomTextFieldDate" o-- "null::dynamic Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::res::components::date_picker.dart::CustomTextFieldDate"
+
+class "fluttermyappp::res::components::our_categories.dart::CustomTextFieldCategory" {
+  +String hint
+  +TextEditingController textController
+  +List<String> suggestions
+  +dynamic Function() onFieldSubmitted
+  +Widget build()
+}
+
+"fluttermyappp::res::components::our_categories.dart::CustomTextFieldCategory" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"fluttermyappp::res::components::our_categories.dart::CustomTextFieldCategory" o-- "null::dynamic Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::res::components::our_categories.dart::CustomTextFieldCategory"
+
+class "fluttermyappp::res::components::time_picker.dart::CustomTextFieldTime" {
+  +String hint
+  +TextEditingController textController
+  +dynamic Function()? onPressed
+  +void selectTime()
+  +Widget build()
+}
+
+"fluttermyappp::res::components::time_picker.dart::CustomTextFieldTime" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"fluttermyappp::res::components::time_picker.dart::CustomTextFieldTime" o-- "null::dynamic Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::res::components::time_picker.dart::CustomTextFieldTime"
+
+class "fluttermyappp::res::components::waiting_screen.dart::WaitingScreen" {
+  +State<WaitingScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::res::components::waiting_screen.dart::WaitingScreen"
+
+class "fluttermyappp::res::components::waiting_screen.dart::_WaitingScreenState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::res::components::waiting_screen.dart::_WaitingScreenState"
+
+class "fluttermyappp::views::appointment_detail_view::appointment_detail_view.dart::AppointmentDetailView" {
+  +DocumentSnapshot<Object?> emp
+  +Widget build()
+}
+
+"fluttermyappp::views::appointment_detail_view::appointment_detail_view.dart::AppointmentDetailView" o-- "cloud_firestore::cloud_firestore.dart::DocumentSnapshot<Object>"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::appointment_detail_view::appointment_detail_view.dart::AppointmentDetailView"
+
+class "fluttermyappp::views::appointment_view::appointment_emp_view.dart::AppointmentEmpView" {
+  +bool isEmployees
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::appointment_view::appointment_emp_view.dart::AppointmentEmpView"
+
+class "fluttermyappp::views::appointment_view::appointment_view.dart::AppointmentView" {
+  +bool isEmployees
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::appointment_view::appointment_view.dart::AppointmentView"
+
+class "fluttermyappp::views::book_appointment_view::book_appointment_view.dart::BookAppointmentView" {
+  +String empID
+  +String empName
+  +String empCategory
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::book_appointment_view::book_appointment_view.dart::BookAppointmentView"
+
+class "fluttermyappp::views::category_details_view::category_details_view.dart::CategoryDetailsView" {
+  +String catName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::category_details_view::category_details_view.dart::CategoryDetailsView"
+
+class "fluttermyappp::views::category_view::category_view.dart::CategoryView" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::category_view::category_view.dart::CategoryView"
+
+class "fluttermyappp::views::change_data::change_data.dart::AvatarWidget" {
+  +_AvatarWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::views::change_data::change_data.dart::AvatarWidget"
+
+class "fluttermyappp::views::change_data::change_data.dart::_AvatarWidgetState" {
+  -File? _image
+  +ImagePicker picker
+  +dynamic getImage()
+  +Widget build()
+}
+
+"fluttermyappp::views::change_data::change_data.dart::_AvatarWidgetState" o-- "dart::io::File"
+"fluttermyappp::views::change_data::change_data.dart::_AvatarWidgetState" o-- "image_picker::image_picker.dart::ImagePicker"
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::views::change_data::change_data.dart::_AvatarWidgetState"
+
+class "fluttermyappp::views::chat_view::auteth.dart::Authenticate" {
+  -FirebaseAuth _auth
+  +Widget build()
+}
+
+"fluttermyappp::views::chat_view::auteth.dart::Authenticate" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::chat_view::auteth.dart::Authenticate"
+
+class "fluttermyappp::views::chat_view::chat_view.dart::ChatRoom" {
+  +Map<String, dynamic> userMap
+  +String chatRoomId
+  -TextEditingController _message
+  -FirebaseFirestore _firestore
+  -FirebaseAuth _auth
+  +File? imageFile
+  +dynamic getImage()
+  +dynamic uploadImage()
+  +void onSendMessage()
+  +Widget build()
+  +Widget messages()
+}
+
+"fluttermyappp::views::chat_view::chat_view.dart::ChatRoom" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"fluttermyappp::views::chat_view::chat_view.dart::ChatRoom" o-- "cloud_firestore::cloud_firestore.dart::FirebaseFirestore"
+"fluttermyappp::views::chat_view::chat_view.dart::ChatRoom" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"fluttermyappp::views::chat_view::chat_view.dart::ChatRoom" o-- "dart::io::File"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::chat_view::chat_view.dart::ChatRoom"
+
+class "fluttermyappp::views::chat_view::chat_view.dart::ShowImage" {
+  +String imageUrl
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::chat_view::chat_view.dart::ShowImage"
+
+class "fluttermyappp::views::chat_view::home_screen.dart::HomeScreen" {
+  +_HomeScreenState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::views::chat_view::home_screen.dart::HomeScreen"
+
+class "fluttermyappp::views::chat_view::home_screen.dart::_HomeScreenState" {
+  +Map<String, dynamic>? userMap
+  +bool isLoading
+  -TextEditingController _search
+  -FirebaseAuth _auth
+  -FirebaseFirestore _firestore
+  +void initState()
+  +void setStatus()
+  +void didChangeAppLifecycleState()
+  +String chatRoomId()
+  +void onSearch()
+  +Widget build()
+}
+
+"fluttermyappp::views::chat_view::home_screen.dart::_HomeScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"fluttermyappp::views::chat_view::home_screen.dart::_HomeScreenState" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"fluttermyappp::views::chat_view::home_screen.dart::_HomeScreenState" o-- "cloud_firestore::cloud_firestore.dart::FirebaseFirestore"
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::views::chat_view::home_screen.dart::_HomeScreenState"
+"flutter::src::widgets::binding.dart::WidgetsBindingObserver" <|-- "fluttermyappp::views::chat_view::home_screen.dart::_HomeScreenState"
+
+class "fluttermyappp::views::employees_profile_view::employees_profile_view.dart::EmployeesProfileView" {
+  +DocumentSnapshot<Object?> emp
+  +State<EmployeesProfileView> createState()
+}
+
+"fluttermyappp::views::employees_profile_view::employees_profile_view.dart::EmployeesProfileView" o-- "cloud_firestore::cloud_firestore.dart::DocumentSnapshot<Object>"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::views::employees_profile_view::employees_profile_view.dart::EmployeesProfileView"
+
+class "fluttermyappp::views::employees_profile_view::employees_profile_view.dart::_EmployeesProfileViewState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::views::employees_profile_view::employees_profile_view.dart::_EmployeesProfileViewState"
+
+class "fluttermyappp::views::home_view::home.dart::Home" {
+  +State<Home> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::views::home_view::home.dart::Home"
+
+class "fluttermyappp::views::home_view::home.dart::_HomeState" {
+  +int selectedIndex
+  +List<dynamic> screenList
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::views::home_view::home.dart::_HomeState"
+
+class "fluttermyappp::views::home_view::home_emp.dart::HomeEmp" {
+  +State<HomeEmp> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::views::home_view::home_emp.dart::HomeEmp"
+
+class "fluttermyappp::views::home_view::home_emp.dart::_HomeEmpState" {
+  +int selectedIndex
+  +List<dynamic> screenList
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::views::home_view::home_emp.dart::_HomeEmpState"
+
+class "fluttermyappp::views::home_view::home_view.dart::HomeView" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::home_view::home_view.dart::HomeView"
+
+class "fluttermyappp::views::login_view::login_view.dart::LoginView" {
+  +State<LoginView> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::views::login_view::login_view.dart::LoginView"
+
+class "fluttermyappp::views::login_view::login_view.dart::_LoginViewState" {
+  +bool isEmpl
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::views::login_view::login_view.dart::_LoginViewState"
+
+class "fluttermyappp::views::portfolio_views::portfolio_image.dart::PortfolioImage" {
+  +String imageUrl
+  +String uploaderId
+  +Map<String, dynamic> toMap()
+}
+
+class "fluttermyappp::views::portfolio_views::portfolio_screen.dart::PortfolioScreen" {
+  +String employeeId
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::portfolio_views::portfolio_screen.dart::PortfolioScreen"
+
+class "fluttermyappp::views::portfolio_views::upload_image.dart::UploadImageScreen" {
+  +String employeeId
+  +_UploadImageScreenState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::views::portfolio_views::upload_image.dart::UploadImageScreen"
+
+class "fluttermyappp::views::portfolio_views::upload_image.dart::_UploadImageScreenState" {
+  -ImagePicker _picker
+  -bool _isLoading
+  -dynamic _uploadImage()
+  +Widget build()
+}
+
+"fluttermyappp::views::portfolio_views::upload_image.dart::_UploadImageScreenState" o-- "image_picker::image_picker.dart::ImagePicker"
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::views::portfolio_views::upload_image.dart::_UploadImageScreenState"
+
+class "fluttermyappp::views::reviews_view::add_review.dart::AddReviewScreen" {
+  +String employeeId
+  +_AddReviewScreenState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::views::reviews_view::add_review.dart::AddReviewScreen"
+
+class "fluttermyappp::views::reviews_view::add_review.dart::_AddReviewScreenState" {
+  -GlobalKey<FormState> _formKey
+  -TextEditingController _reviewerNameController
+  -TextEditingController _reviewTextController
+  +void initState()
+  -dynamic _loadReviewerName()
+  -void _submitReview()
+  +Widget build()
+}
+
+"fluttermyappp::views::reviews_view::add_review.dart::_AddReviewScreenState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"fluttermyappp::views::reviews_view::add_review.dart::_AddReviewScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::views::reviews_view::add_review.dart::_AddReviewScreenState"
+
+class "fluttermyappp::views::reviews_view::employee_reviews.dart::EmployeeReviewsScreen" {
+  +String employeeId
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::reviews_view::employee_reviews.dart::EmployeeReviewsScreen"
+
+class "fluttermyappp::views::reviews_view::emp_list_screen.dart::EmployeeListScreen" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::reviews_view::emp_list_screen.dart::EmployeeListScreen"
+
+class "fluttermyappp::views::reviews_view::emp_list_screen.dart::UploadImageScreen" {
+  +String employeeId
+  +_UploadImageScreenState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::views::reviews_view::emp_list_screen.dart::UploadImageScreen"
+
+class "fluttermyappp::views::reviews_view::emp_list_screen.dart::_UploadImageScreenState" {
+  -ImagePicker _picker
+  -bool _isLoading
+  -dynamic _uploadImage()
+  +Widget build()
+}
+
+"fluttermyappp::views::reviews_view::emp_list_screen.dart::_UploadImageScreenState" o-- "image_picker::image_picker.dart::ImagePicker"
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::views::reviews_view::emp_list_screen.dart::_UploadImageScreenState"
+
+class "fluttermyappp::views::reviews_view::emp_list_screen.dart::PortfolioScreen" {
+  +String employeeId
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::reviews_view::emp_list_screen.dart::PortfolioScreen"
+
+class "fluttermyappp::views::reviews_view::emp_list_screen.dart::EmployeeReviewsScreen" {
+  +String employeeId
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::reviews_view::emp_list_screen.dart::EmployeeReviewsScreen"
+
+class "fluttermyappp::views::reviews_view::emp_list_screen.dart::EmployeeReviewsScreenWithout" {
+  +String employeeId
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::reviews_view::emp_list_screen.dart::EmployeeReviewsScreenWithout"
+
+class "fluttermyappp::views::reviews_view::emp_list_screen.dart::AddReviewScreen" {
+  +String employeeId
+  +_AddReviewScreenState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::views::reviews_view::emp_list_screen.dart::AddReviewScreen"
+
+class "fluttermyappp::views::reviews_view::emp_list_screen.dart::_AddReviewScreenState" {
+  -GlobalKey<FormState> _formKey
+  -TextEditingController _reviewTextController
+  -String _reviewerName
+  +void initState()
+  -dynamic _loadReviewerName()
+  -dynamic _submitReview()
+  +Widget build()
+}
+
+"fluttermyappp::views::reviews_view::emp_list_screen.dart::_AddReviewScreenState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"fluttermyappp::views::reviews_view::emp_list_screen.dart::_AddReviewScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::views::reviews_view::emp_list_screen.dart::_AddReviewScreenState"
+
+class "fluttermyappp::views::reviews_view::review.dart::Review" {
+  +String employeeId
+  +String reviewerName
+  +String reviewText
+  +Timestamp timestamp
+  +Map<String, dynamic> toMap()
+}
+
+"fluttermyappp::views::reviews_view::review.dart::Review" o-- "cloud_firestore_platform_interface::src::timestamp.dart::Timestamp"
+
+class "fluttermyappp::views::salons_view::salons_view.dart::SalonsView" {
+  +String salName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::salons_view::salons_view.dart::SalonsView"
+
+class "fluttermyappp::views::salons_view::salons_view_all.dart::SalonsAllView" {
+  +Widget build()
+  +dynamic getEmployeesList()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::salons_view::salons_view_all.dart::SalonsAllView"
+
+class "fluttermyappp::views::search_view::search_view.dart::SearchView" {
+  +String searchQuery
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::search_view::search_view.dart::SearchView"
+
+class "fluttermyappp::views::settings_view::settings_view.dart::SettingsView" {
+  -dynamic _changeAvatar()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::settings_view::settings_view.dart::SettingsView"
+
+class "fluttermyappp::views::settings_view::settings_view_emp.dart::SettingsEmpView" {
+  -dynamic _changeAvatar()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "fluttermyappp::views::settings_view::settings_view_emp.dart::SettingsEmpView"
+
+class "fluttermyappp::views::signup_view::signup_view.dart::SignupView" {
+  +State<SignupView> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "fluttermyappp::views::signup_view::signup_view.dart::SignupView"
+
+class "fluttermyappp::views::signup_view::signup_view.dart::_SignupViewState" {
+  +bool isEmployees
+  +String myInitialItem
+  +List<String> suggestions
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "fluttermyappp::views::signup_view::signup_view.dart::_SignupViewState"
+
+
+@enduml
